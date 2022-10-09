@@ -37,7 +37,7 @@ std::vector<Position> Circle::Rasterize(int width) const {
     std::vector<Position> result;
     for (int i = 0; i < m_r; i++) {
         for (int j = 0; j < m_r; j++) {
-            if (i * i + j * j <= m_r * m_r) {
+            if (i * i + j * j <= m_r * m_r && (i + 1) * (i + 1) + j * j > m_r * m_r) {
                 result.emplace_back(m_p.GetX() + i, m_p.GetY() + j);
                 result.emplace_back(m_p.GetX() - i, m_p.GetY() + j);
                 result.emplace_back(m_p.GetX() + i, m_p.GetY() - j);

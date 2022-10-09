@@ -49,10 +49,10 @@ void Canvas::Export_to_pgm(const std::string &filename) const {
     file << "P2" << std::endl;
     file << m_width << " " << m_height << std::endl;
     file << "1" << std::endl;
-    std::vector<std::vector<bool>> raster(m_width, std::vector<bool>(m_height, false));
+    std::vector<std::vector<bool>> raster(m_width, std::vector<bool>(m_height, true));
     for (auto const &shape : m_shapes) {
         for (auto const &pos : shape->Rasterize(2)) {
-            raster[(int) pos.GetX()][(int) pos.GetY()] = true;
+            raster[(int) pos.GetX()][(int) pos.GetY()] = false;
         }
     }
     for (int i = 0; i < m_height; i++) {
