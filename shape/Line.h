@@ -12,6 +12,8 @@
 class Line : public Shape {
 public:
 
+    Line() = default;
+
     Line(double x1, double y1, double x2, double y2);
 
     void Translate(Position p) override;

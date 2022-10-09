@@ -6,6 +6,7 @@
 #define CPP_SP_01_RECTANGLE_H
 
 #include "Shape.h"
+#include "Line.h"
 #include <iostream>
 #include "../position/Position.h"
 
@@ -24,7 +25,11 @@ public:
     std::vector<Position> Rasterize(int width) const override;
 
 private:
-    Position m_p;
+    Line m_a;
+    Line m_b;
+    Line m_c;
+    Line m_d;
+//    Position m_p;
     double m_w;
     double m_h;
 };

@@ -3,43 +3,61 @@
 //
 
 #include "Rectangle.h"
+#include "Line.h"
 
-Rectangle::Rectangle(double x, double y, double width, double height) : m_p(x, y), m_w(width), m_h(height) {
-    if (width <= 0 || height <= 0) {
-        throw std::invalid_argument("Width and height must be positive");
-    }
+
+Rectangle::Rectangle(double x, double y, double width, double height) {
+    m_a = Line(x, y, x + width, y);
+    m_b = Line(x + width, y, x + width, y + height);
+    m_c = Line(x + width, y + height, x, y + height);
+    m_d = Line(x, y + height, x, y);
+    m_w = width;
+    m_h = height;
+
 }
 
 void Rectangle::Translate(Position p) {
-    m_p += p;
+    m_a.Translate(p);
+    m_b.Translate(p);
+    m_c.Translate(p);
+    m_d.Translate(p);
 }
 
 // TODO: Rotace rectanglu nefunguje spravne, rotuje se pouze hlavni bod, zbytek se neotoci
 void Rectangle::Rotate(Position p, double angle) {
-    m_p.Rotate(p, angle);
+    m_a.Rotate(p, angle);
+    m_b.Rotate(p, angle);
+    m_c.Rotate(p, angle);
+    m_d.Rotate(p, angle);
 }
 
 void Rectangle::Scale(Position p, double f) {
+    m_a.Scale(p, f);
+    m_b.Scale(p, f);
+    m_c.Scale(p, f);
+    m_d.Scale(p, f);
     m_w *= f;
     m_h *= f;
 }
 
 std::string Rectangle::Vectorize(const std::string &color, int width) const {
-    std::string result = "<rect x=\"" + std::to_string(m_p.GetX()) + "\" y=\"" + std::to_string(m_p.GetY()) +
-                         "\" width=\"" + std::to_string(m_w) + "\" height=\"" + std::to_string(m_h) +
-                         "\" stroke=\"" + color + "\" stroke-width=\"" + std::to_string(width) + R"(" fill="none" />)";
-    return result;
+    return m_a.Vectorize(color, width) + m_b.Vectorize(color, width) + m_c.Vectorize(color, width) +
+           m_d.Vectorize(color, width);
 }
 
 std::vector<Position> Rectangle::Rasterize(int width) const {
     std::vector<Position> result;
-    for (int i = 0; i < m_w; i++) {
-        for (int j = 0; j < m_h; j++) {
-            result.emplace_back(m_p.GetX() + i, m_p.GetY() + j);
-        }
-    }
+    std::vector<Position> a = m_a.Rasterize(width);
+    std::vector<Position> b = m_b.Rasterize(width);
+    std::vector<Position> c = m_c.Rasterize(width);
+    std::vector<Position> d = m_d.Rasterize(width);
+    result.insert(result.end(), a.begin(), a.end());
+    result.insert(result.end(), b.begin(), b.end());
+    result.insert(result.end(), c.begin(), c.end());
+    result.insert(result.end(), d.begin(), d.end());
     return result;
 }
+
 
 
 
