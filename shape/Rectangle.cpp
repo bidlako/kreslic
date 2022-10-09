@@ -6,15 +6,17 @@
 #include "Line.h"
 
 
-Rectangle::Rectangle(double x, double y, double width, double height) {
-    m_a = Line(x, y, x + width, y);
-    m_b = Line(x + width, y, x + width, y + height);
-    m_c = Line(x + width, y + height, x, y + height);
-    m_d = Line(x, y + height, x, y);
-    m_w = width;
-    m_h = height;
+Rectangle::Rectangle(double x, double y, double width, double height) :
+        m_a(x, y, x
+                  + width, y),
+        m_b(x
+            + width, y, x + width, y + height),
+        m_c(x
+            + width, y + height, x, y + height),
+        m_d(x, y
+               + height, x, y),
 
-}
+        m_w(width), m_h(height) {}
 
 void Rectangle::Translate(Position p) {
     m_a.Translate(p);
