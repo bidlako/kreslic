@@ -14,14 +14,6 @@ double Position::GetY() const {
     return m_y;
 }
 
-void Position::SetX(double x) {
-    m_x = x;
-}
-
-void Position::SetY(double y) {
-    m_y = y;
-}
-
 Position Position::operator+(const Position &other) const {
     return {m_x + other.m_x, m_y + other.m_y};
 }
@@ -67,7 +59,7 @@ void Position::operator*=(double f) {
     m_y *= f;
 }
 
-double Position::deg2rad(double deg) const {
+double Position::deg2rad(double deg) {
     return deg * M_PI / 180;
 }
 

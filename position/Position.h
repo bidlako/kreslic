@@ -8,17 +8,11 @@
 
 class Position {
 public:
-    Position() = default;
-
     Position(double x, double y);
 
     double GetX() const;
 
     double GetY() const;
-
-    void SetX(double x);
-
-    void SetY(double y);
 
     void Rotate(double angle);
 
@@ -41,7 +35,7 @@ public:
 private:
     double m_x;
     double m_y;
-    double deg2rad(double deg) const;
+    static double deg2rad(double deg) ;
 };
 
 

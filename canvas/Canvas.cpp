@@ -13,6 +13,10 @@ void Canvas::Draw(std::unique_ptr<Shape> shape) {
     m_shapes.push_back(std::move(shape));
 }
 
+void Canvas::Draw(Shape &&shape) {
+    m_shapes.push_back(shape);
+}
+
 void Canvas::Translate(double x, double y) const {
     for (auto const &shape : m_shapes) {
         shape->Translate({x, y});
