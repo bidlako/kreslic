@@ -9,13 +9,13 @@
 #include <vector>
 #include <memory>
 
-constexpr uint8_t BLACK = 0;
-constexpr uint8_t WHITE = 255;
+constexpr auto SVG_BLACK = "black";
+constexpr auto SVG_WHITE = "white";
+constexpr auto PGM_BLACK = false;
+constexpr auto PGM_WHITE = true;
 
 class Canvas {
 public:
-    Canvas(int width, int height);
-
     void Draw(std::unique_ptr<Shape> shape);
 
     void Transform(std::function<void(Shape &)> const &transformer) const;
@@ -23,6 +23,10 @@ public:
     void Export_to_svg(std::string const &filename) const;
 
     void Export_to_pgm(std::string const &filename) const;
+
+    void Set_Width(int width);
+
+    void Set_Height(int height);
 
 private:
     int m_width{};

@@ -23,10 +23,10 @@ public:
     virtual void Scale(Position p, double f) = 0;
 
     // tohle by melo bat color a thickness
-    virtual std::string Vectorize(std::string const &color, int width) const = 0;
+    [[nodiscard]] virtual std::string Vectorize(std::string const &color, int width) const = 0;
 
     // tohle by melo bat color a thickness
-    virtual std::vector<Position> Rasterize(int width) const = 0;
+    [[nodiscard]] virtual std::vector<Position> Rasterize(int width) const = 0;
 
 };
 

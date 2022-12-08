@@ -7,22 +7,25 @@
 
 #include <filesystem>
 #include "canvas.h"
+#include "parser.h"
 
 constexpr auto PGM_EXTENSION = ".pgm";
 constexpr auto SVG_EXTENSION = ".svg";
-constexpr auto TXT_EXTENSION = ".txt";
 
 class GraphicEditor {
 public:
-    GraphicEditor(int width, int height);
-
     void Load_From_File(const std::filesystem::path &path);
 
     void Save_As(const std::filesystem::path &path) const;
 
+    void Set_Canvas_Size(int width, int height);
+
 
 private:
     Canvas m_canvas;
+    Parser m_parser;
+    int m_width{};
+    int m_height{};
 };
 
 
