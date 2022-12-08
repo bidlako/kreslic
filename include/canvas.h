@@ -5,7 +5,7 @@
 #ifndef CPP_SP_01_CANVAS_H
 #define CPP_SP_01_CANVAS_H
 
-#include "../shape/Shape.h"
+#include "shape.h"
 #include <vector>
 #include <memory>
 
@@ -18,13 +18,7 @@ public:
 
     void Draw(std::unique_ptr<Shape> shape);
 
-    void Draw(Shape &&shape);
-
-    void Translate(double x, double y) const;
-
-    void Scale(double x, double y, double f) const;
-
-    void Rotate(double x, double y, double angle) const;
+    void Transform(std::function<void(Shape &)> const &transformer) const;
 
     void Export_to_svg(std::string const &filename) const;
 

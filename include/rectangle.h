@@ -5,10 +5,10 @@
 #ifndef CPP_SP_01_RECTANGLE_H
 #define CPP_SP_01_RECTANGLE_H
 
-#include "Shape.h"
-#include "Line.h"
+#include "shape.h"
+#include "line.h"
 #include <iostream>
-#include "../position/Position.h"
+#include "position.h"
 
 class Rectangle : public Shape {
 public:

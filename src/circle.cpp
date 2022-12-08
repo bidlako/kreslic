@@ -3,8 +3,8 @@
 //
 
 #include <stdexcept>
-#include "Circle.h"
-#include "../Position/Position.h"
+#include "../include/circle.h"
+#include "../include/position.h"
 
 Circle::Circle(double x, double y, double r) : m_p(x, y), m_r(r) {
     if (r <= 0) {

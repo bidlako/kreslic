@@ -2,15 +2,17 @@
 // Created by biond on 08.10.2022.
 //
 
-#ifndef CPP_SP_01_CIRCLE_H
-#define CPP_SP_01_CIRCLE_H
+#ifndef CPP_SP_01_LINE_H
+#define CPP_SP_01_LINE_H
 
-#include "Shape.h"
+#include "shape.h"
+#include "canvas.h"
+#include "position.h"
 
-
-class Circle : public Shape {
+class Line : public Shape {
 public:
-    Circle(double x, double y, double r);
+
+    Line(double x1, double y1, double x2, double y2);
 
     void Translate(Position p) override;
 
@@ -23,9 +25,9 @@ public:
     std::vector<Position> Rasterize(int width) const override;
 
 private:
-    Position m_p;
-    double m_r;
+    Position m_x;
+    Position m_y;
 };
 
 
-#endif //CPP_SP_01_CIRCLE_H
+#endif //CPP_SP_01_LINE_H

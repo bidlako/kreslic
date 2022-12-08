@@ -1,8 +1,9 @@
 //
 // Created by biond on 08.10.2022.
 //
+#include <numbers>
 #include <cmath>
-#include "Position.h"
+#include "position.h"
 
 Position::Position(double x, double y) : m_x(x), m_y(y) {}
 
@@ -60,7 +61,7 @@ void Position::operator*=(double f) {
 }
 
 double Position::deg2rad(double deg) {
-    return deg * M_PI / 180;
+    return deg * std::numbers::pi / 180;
 }
 
 

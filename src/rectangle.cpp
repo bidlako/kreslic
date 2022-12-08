@@ -2,8 +2,8 @@
 // Created by biond on 08.10.2022.
 //
 
-#include "Rectangle.h"
-#include "Line.h"
+#include "../include/rectangle.h"
+#include "../include/line.h"
 
 
 Rectangle::Rectangle(double x, double y, double width, double height) :

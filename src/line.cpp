@@ -2,9 +2,9 @@
 // Created by biond on 08.10.2022.
 //
 
-#include "Line.h"
+#include "../include/line.h"
 
-#include "../position/Position.h"
+#include "../include/position.h"
 #include <cmath>
 #include <iostream>
 

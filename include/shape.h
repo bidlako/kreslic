@@ -6,7 +6,7 @@
 #define CPP_SP_01_SHAPE_H
 
 
-#include "../position/Position.h"
+#include "position.h"
 #include <vector>
 #include <string>
 
