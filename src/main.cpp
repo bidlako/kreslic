@@ -22,10 +22,14 @@ args parse_args(int argc, char *argv[]) {
 }
 
 int main(int argc, char *argv[]) {
-    auto [input_f, output_f, width, height] = parse_args(argc, argv);
-    auto editor = GraphicEditor();
-    editor.Set_Canvas_Size(width, height);
-    editor.Load_From_File(input_f);
-    editor.Save_As(output_f);
+    try {
+        auto [input_f, output_f, width, height] = parse_args(argc, argv);
+        auto editor = GraphicEditor();
+        editor.Set_Canvas_Size(width, height);
+        editor.Load_From_File(input_f);
+        editor.Save_As(output_f);
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
 }
 
